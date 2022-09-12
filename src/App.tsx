@@ -13,15 +13,24 @@ const App: React.FC = (props: any) => {
   }
 
   return (
-    <Tree
-	data={data}
-	height={700}
-	width={1000}
-  margins={{ top: 20, bottom: 10, left: 20, right: 200 }}
-  gProps={{
-    className: 'node',
-    onClick: handleClick,
-  }}/>
+    <div className='content'>
+      <div className='tree'>
+        <Tree
+        data={data}
+        height={800}
+        width={800}
+        margins={{ top: 50, bottom: 0, left: 10, right: 200 }}
+        gProps={{
+          className: 'node',
+          onClick: handleClick,
+        }}/>
+      </div>
+      <div>
+        <div>
+          
+        </div>
+      </div>
+    </div>
   );
 }
 

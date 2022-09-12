@@ -1,4 +1,23 @@
+body {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
 circle {
   cursor: pointer;
   fill: black !important;
+}
+
+text {
+  transform: rotate(90deg);
+}
+
+.content {
+  padding: 10px;
+  display: flex;
+}
+
+.tree {
+  transform: rotate(-90deg);
+  min-width: 800px;
 }

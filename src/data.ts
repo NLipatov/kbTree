@@ -1,4 +1,4 @@
-const textProps = {x: -15, y: 20}
+const textProps = {x: -50, y: 20}
 
 const data = {
     name: "Насекомоядные",
