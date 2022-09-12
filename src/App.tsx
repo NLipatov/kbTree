@@ -3,7 +3,6 @@ import {Tree} from 'react-tree-graph';
 import {data, Species, Specie} from './data';
 import 'react-tree-graph/dist/style.css'
 import './App.css';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent';
 
@@ -19,19 +18,11 @@ const App: React.FC = (props: any) => {
       }
     }
 
-    console.log(event.target.classList.add('_active'))
-    // console.log('handle click ', event);
-    // console.log('handle click node', node);
+    console.log(event.target.classList.add('_active'));
 
     const targetSpecie = Species.filter(x=> x.name === node);
-    // console.log(targetSpecie[0] === undefined)
-    // console.log(targetSpecie[0] !== undefined ? targetSpecie[0].facts : 'N/A')
 
     setTabSpecie(targetSpecie[0]);
-
-    // console.log(tabSpecie);
-    
-    // alert(`${node} got clicked`);
   }
 
   return (
