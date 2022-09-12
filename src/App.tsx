@@ -5,6 +5,7 @@ import 'react-tree-graph/dist/style.css'
 import './App.css';
 import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent';
+import ImportFileBodyComponent from './ImportFileBodyComponent';
 
 const App: React.FC = (props: any) => {
   const chooseSpecieAssumption: string = "Выберите вид в дереве";
@@ -47,6 +48,7 @@ const App: React.FC = (props: any) => {
         facts={tabSpecie.facts}
         name={tabSpecie.name}
         id={tabSpecie.id}/>
+        <ImportFileBodyComponent />
       </div>
     </div>
   );
