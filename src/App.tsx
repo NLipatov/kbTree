@@ -7,8 +7,16 @@ import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent';
 import ImportFileBodyComponent from './ImportFileBodyComponent';
 import ExportFileComponent from './ExportFileComponent';
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from './store/slice'
 
 const App: React.FC = (props: any) => {
+  const count: any = useSelector<any>(state => state.counter.value)
+  const treeData: any = useSelector((state: any) => state.counter.treeValue);
+  const speciesData: any = useSelector<any>((state) => state.counter.Species);
+  // console.log(speciesData)
+  const dispatch = useDispatch()
+
   const chooseSpecieAssumption: string = "Выберите вид в дереве";
   const [tabSpecie, setTabSpecie] = useState<Specie>({id: -1, description: chooseSpecieAssumption, existance: chooseSpecieAssumption, facts: [`${chooseSpecieAssumption}`], name: chooseSpecieAssumption});
   const handleClick = (event: any, node: any) => {
@@ -22,7 +30,7 @@ const App: React.FC = (props: any) => {
 
     console.log(event.target.classList.add('_active'));
 
-    const targetSpecie = Species.filter(x=> x.name === node);
+    const targetSpecie = speciesData.filter((x: Specie)=> x.name === node);
 
     setTabSpecie(targetSpecie[0]);
   }
@@ -31,7 +39,7 @@ const App: React.FC = (props: any) => {
     <div className='content'>
       <div className='tree'>
         <Tree
-        data={data}
+        data={treeData}
         height={900}
         width={800}
         margins={{ top: 100, bottom: 100, left: 100, right: 100 }}
@@ -53,6 +61,21 @@ const App: React.FC = (props: any) => {
       <div className='controls'>
         <ImportFileBodyComponent />
         <ExportFileComponent />
+      </div>
+      <div>
+        <button
+          aria-label="Increment value"
+          onClick={() => dispatch(increment())}
+        >
+          Increment
+        </button>
+          <span>{count}</span>
+        <button
+          aria-label="Decrement value"
+          onClick={() => dispatch(decrement())}
+        >
+          Decrement
+        </button>
       </div>
     </div>
   );

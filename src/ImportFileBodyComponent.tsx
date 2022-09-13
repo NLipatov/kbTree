@@ -1,9 +1,18 @@
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment, setSpecies } from './store/slice'
+
 const ImportFileBodyComponent = () => {
+    const count: any = useSelector<any>(state => state.counter.Species)
+    const dispatch = useDispatch()
+
+    // console.log(count)
+
     let fileReader: any;
 
     const handleFileRead = (e: any) => {
         const content = fileReader.result;
-        console.log(content);
+        const contentObject = JSON.parse(content);
+        dispatch(setSpecies(contentObject));
     }
 
     const handleFileChoosen = (file:any) => {
