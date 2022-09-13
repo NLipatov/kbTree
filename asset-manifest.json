@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/kbtree/static/css/main.8596b8e3.css",
+    "main.js": "/kbtree/static/js/main.fc527bca.js",
+    "static/js/787.80049a71.chunk.js": "/kbtree/static/js/787.80049a71.chunk.js",
+    "index.html": "/kbtree/index.html",
+    "main.8596b8e3.css.map": "/kbtree/static/css/main.8596b8e3.css.map",
+    "main.fc527bca.js.map": "/kbtree/static/js/main.fc527bca.js.map",
+    "787.80049a71.chunk.js.map": "/kbtree/static/js/787.80049a71.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8596b8e3.css",
+    "static/js/main.fc527bca.js"
+  ]
+}
