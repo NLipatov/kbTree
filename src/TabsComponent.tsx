@@ -1,11 +1,8 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Specie } from './data';
 
 const TabsComponent: FC<Specie> = (prop): JSX.Element => {
-    useEffect(() => {
-        console.log('render tabs')
-    }, [prop]);
     return(
         <div style={{width: '100%'}}>
         <Tabs>

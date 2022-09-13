@@ -1,5 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, setSpecies } from './store/slice'
+import { useSelector } from 'react-redux'
 
 const ExportFileComponent = () => {
     const treeData: any = useSelector((state: any) => state.counter.treeValue);
@@ -10,7 +9,7 @@ const ExportFileComponent = () => {
         const file = new Blob([`
         {
             "Species": ${JSON.stringify(speciesData)},
-            "treeValue": ${JSON.stringify(speciesData)},
+            "treeValue": ${JSON.stringify(treeData)}
         }`], {type: 'application/json'});
         element.href = URL.createObjectURL(file);
         element.download = "schema.json";
