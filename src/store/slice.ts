@@ -12,10 +12,14 @@ export const counterSlice = createSlice({
     setSpecies: (state, action) => {
         state.Species = action.payload.Species;
         state.treeValue = action.payload.treeValue;
+    },
+    setNewSpecies: (state, action) => {
+        state.Species = action.payload;
+        console.log(`new species: ${state.Species}`);
     }
   }
 })
 
-export const { setSpecies } = counterSlice.actions
+export const { setSpecies, setNewSpecies } = counterSlice.actions
 
 export default counterSlice.reducer

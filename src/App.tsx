@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux'
 
 const App: React.FC = (props: any) => {
   const treeData: any = useSelector((state: any) => state.counter.treeValue);
-  const speciesData: any = useSelector<any>((state) => state.counter.Species);
+  let speciesData: any = useSelector<any>((state) => state.counter.Species);
 
   const chooseSpecieAssumption: string = "Выберите вид в дереве";
   const [tabSpecie, setTabSpecie] = useState<Specie>({id: -1, description: chooseSpecieAssumption, existance: chooseSpecieAssumption, facts: [`${chooseSpecieAssumption}`], name: chooseSpecieAssumption});
