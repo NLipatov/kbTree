@@ -48,10 +48,7 @@ const App: React.FC = (props: any) => {
         }}/>
       </div>
       <div className="information">
-        <TabsComponent description={tabSpecie.description}
-        existance={tabSpecie.existance}
-        facts={tabSpecie.facts}
-        name={tabSpecie.name}
+        <TabsComponent 
         id={tabSpecie.id}/>
       </div>
       <div className='controls'>

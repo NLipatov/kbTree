@@ -7,49 +7,67 @@ import { useDispatch } from 'react-redux';
 import { setNewSpecies, setSpecies } from './store/slice';
 import { useSelector } from 'react-redux';
 
-const TabsComponent: FC<Specie> = (prop): JSX.Element => {
+const TabsComponent: FC<any> = (prop): JSX.Element => {
   const speciesData: any = useSelector<any>((state) => state.counter.Species);
   const dispatch = useDispatch();
 
-  const rdescription = speciesData.filter((x:any)=>x.name === prop.name)
-  console.log('tab:')
-  console.log(rdescription)
-  let description = `${rdescription}`
+  const [f, setF] = useState<any>(null);
+  const [e, setE] = useState<any>(null);
+  const [d, setD] = useState<any>(null);
+
   useEffect(() => {
-    console.log('render')
-    setD(prop.description);
+    if(prop.id !== -1)
+    {
+      setD(speciesData.filter((x:any)=>x.id === prop.id)[0].description);
+      setF(speciesData.filter((x:any)=>x.id === prop.id)[0].facts);
+      setE(speciesData.filter((x:any)=>x.id === prop.id)[0].existance);
+    }
+    
   }, [prop]);
-  const [d, setD] = useState(description);
-  const saveEdition = () => {
+  
+
+  const saveChanges = () => {
     let newSpecies = JSON.parse(JSON.stringify(speciesData));
-    console.log(newSpecies)
+    
     newSpecies.forEach((s: any) => {
-      if(s.name === prop.name)
+      if(s.id === prop.id)
       {
         s.description = d;
+        s.existance = e;
       }
     });
-    dispatch(setNewSpecies(newSpecies));
+    dispatch(setNewSpecies(newSpecies))
   }
+
+
     return(
         <div style={{width: '100%'}}>
-        <Tabs>
-            <TabList>
-              <Tab>Описание</Tab>
-              <Tab>Факты</Tab>
-              <Tab>Наличие в природе</Tab>
-            </TabList>
-
-            <TabPanel>
-              <EditTextarea value={d} onChange={e => setD(e.target.value)} onBlur={saveEdition} inputClassName="editable-description" className="editable-description" />
-            </TabPanel>
-            <TabPanel>
-              <p>{prop.facts}</p>
-            </TabPanel>
-            <TabPanel>
-              <p>{prop.existance}</p>
-            </TabPanel>
-          </Tabs>
+          {d !== null ? 
+                  <Tabs>
+                  <TabList>
+                    <Tab>Описание</Tab>
+                    <Tab>Факты</Tab>
+                    <Tab>Наличие в природе</Tab>
+                  </TabList>
+      
+                  <TabPanel>
+                    <EditTextarea value={d} onChange={e => setD(e.target.value)} inputClassName="editable-description" className="editable-description" />
+                    <button onClick={saveChanges}>Save</button>
+                  </TabPanel>
+                  <TabPanel>
+                    <ul className="editable-description">
+                      {f !== null ? f.map((f: string, index: number) => {
+                        return <li key={index}>{f}</li>
+                      }) : null}
+                    </ul>
+                  </TabPanel>
+                  <TabPanel>
+                    <EditTextarea value={e} onChange={e => setE(e.target.value)} inputClassName="editable-description" className="editable-description" />
+                    <button onClick={saveChanges}>Save</button>
+                  </TabPanel>
+                </Tabs>
+                :
+                <span className='wise-advice'>Выберите любой узел дерева</span>}
         </div>
     );
 }
