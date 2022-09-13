@@ -53,21 +53,8 @@ text {
   padding: 10px;
 }
 
-.react-tabs__tab--selected {
+.controls { 
+  bottom: 0;
+  position: absolute;
+  margin: 10px;
 }
-
-/* .react-tabs__tab-list {
-  position: fixed;
-  background-color: white;
-  width: 25vw;
-  margin-top: -6px !important;
-}
-
-.react-tabs {
-  margin-top: -20px;
-  background-color: transparent;
-}
-
-.react-tabs__tab-panel p{
-  padding-top: 70px;
-} */

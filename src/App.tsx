@@ -6,6 +6,7 @@ import './App.css';
 import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent';
 import ImportFileBodyComponent from './ImportFileBodyComponent';
+import ExportFileComponent from './ExportFileComponent';
 
 const App: React.FC = (props: any) => {
   const chooseSpecieAssumption: string = "Выберите вид в дереве";
@@ -48,7 +49,10 @@ const App: React.FC = (props: any) => {
         facts={tabSpecie.facts}
         name={tabSpecie.name}
         id={tabSpecie.id}/>
+      </div>
+      <div className='controls'>
         <ImportFileBodyComponent />
+        <ExportFileComponent />
       </div>
     </div>
   );
