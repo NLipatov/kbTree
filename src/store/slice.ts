@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {data, Species } from '../data';
 
-export const counterSlice = createSlice({
-  name: 'counter',
+export const defaultSlice = createSlice({
+  name: 'default',
   initialState: {
     value: 0,
     treeValue: data,
@@ -15,11 +15,10 @@ export const counterSlice = createSlice({
     },
     setNewSpecies: (state, action) => {
         state.Species = action.payload;
-        console.log(`new species: ${state.Species}`);
     }
   }
 })
 
-export const { setSpecies, setNewSpecies } = counterSlice.actions
+export const { setSpecies, setNewSpecies } = defaultSlice.actions
 
-export default counterSlice.reducer
+export default defaultSlice.reducer

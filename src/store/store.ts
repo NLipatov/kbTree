@@ -3,6 +3,6 @@ import sliceReducer from './slice';
 
 export default configureStore({
   reducer: {
-    counter: sliceReducer
+    default: sliceReducer
   }
 })

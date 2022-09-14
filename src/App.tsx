@@ -4,19 +4,19 @@ import { Specie } from './data';
 import 'react-tree-graph/dist/style.css'
 import './App.css';
 import 'react-tabs/style/react-tabs.css';
-import TabsComponent from './TabsComponent';
-import ImportFileBodyComponent from './ImportFileBodyComponent';
-import ExportFileComponent from './ExportFileComponent';
+import TabsComponent from './components/TabsComponent';
+import ImportFileBodyComponent from './components/ImportFileBodyComponent';
+import ExportFileComponent from './components/ExportFileComponent';
 import { useSelector } from 'react-redux'
 
 const App: React.FC = (props: any) => {
-  const treeData: any = useSelector((state: any) => state.counter.treeValue);
-  let speciesData: any = useSelector<any>((state) => state.counter.Species);
+  const treeData: any = useSelector((state: any) => state.default.treeValue);
+  let speciesData: any = useSelector<any>((state) => state.default.Species);
 
-  const chooseSpecieAssumption: string = "Выберите вид в дереве";
-  const [tabSpecie, setTabSpecie] = useState<Specie>({id: -1, description: chooseSpecieAssumption, existance: chooseSpecieAssumption, facts: [`${chooseSpecieAssumption}`], name: chooseSpecieAssumption});
+  const [tabSpecie, setTabSpecie] = useState<Specie | null>(null);
   const handleClick = (event: any, node: any) => {
   const circles = document.getElementsByClassName("node");
+  
   for (let i = 0; i < circles.length; i++) {
     if(circles[i].getElementsByTagName("circle")[0].classList.contains("_active"))
     {
@@ -24,7 +24,7 @@ const App: React.FC = (props: any) => {
     }
   }
 
-    console.log(event.target.classList.add('_active'));
+    event.target.classList.add('_active');
 
     const targetSpecie = speciesData.filter((x: Specie)=> x.name === node);
 
@@ -49,7 +49,7 @@ const App: React.FC = (props: any) => {
       </div>
       <div className="information">
         <TabsComponent 
-        id={tabSpecie.id}/>
+        id={tabSpecie === null ? -1 : tabSpecie.id}/>
       </div>
       <div className='controls'>
         <ImportFileBodyComponent />

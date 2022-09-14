@@ -1,14 +1,12 @@
 import { useDispatch } from 'react-redux'
-import { setSpecies } from './store/slice'
+import { setSpecies } from '../store/slice'
 
 const ImportFileBodyComponent = () => {
     const dispatch = useDispatch()
 
-    // console.log(count)
-
     let fileReader: any;
 
-    const handleFileRead = (e: any) => {
+    const handleFileRead = (e: React.ChangeEvent<HTMLInputElement>) => {
         const content = fileReader.result;
         const contentObject = JSON.parse(content);
         dispatch(setSpecies(contentObject));

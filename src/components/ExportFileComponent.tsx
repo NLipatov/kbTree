@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
 
 const ExportFileComponent = () => {
-    const treeData: any = useSelector((state: any) => state.counter.treeValue);
-    const speciesData: any = useSelector<any>((state) => state.counter.Species);
+    const treeData: string = useSelector((state: any) => state.default.treeValue);
+    const speciesData: any = useSelector<any>((state) => state.default.Species);
 
     const downloadTxtFile = () => {
         const element = document.createElement("a");

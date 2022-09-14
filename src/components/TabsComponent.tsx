@@ -1,14 +1,14 @@
 import { FC, useState, useRef, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { Specie } from './data';
+import { Specie } from '../data';
 import { EditText, EditTextarea } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
 import { useDispatch } from 'react-redux';
-import { setNewSpecies, setSpecies } from './store/slice';
+import { setNewSpecies, setSpecies } from '../store/slice';
 import { useSelector } from 'react-redux';
 
 const TabsComponent: FC<any> = (prop): JSX.Element => {
-  const speciesData: any = useSelector<any>((state) => state.counter.Species);
+  const speciesData: any = useSelector<any>((state) => state.default.Species);
   const dispatch = useDispatch();
 
   const [f, setF] = useState<any>(null);
